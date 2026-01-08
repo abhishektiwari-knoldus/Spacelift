@@ -73,25 +73,25 @@ resource "aws_security_group" "ssh" {
     Name = "allow-ssh"
   }
 }
-data "aws_ami" "ubuntu" {
-  most_recent = true
+# data "aws_ami" "ubuntu" {
+#   most_recent = true
 
-  filter {
-    name = "name"
-    values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
-  }
+#   filter {
+#     name = "name"
+#     values = ["ubuntu/images/hvm-ssd-gp3/ubuntu-noble-24.04-amd64-server-*"]
+#   }
 
-  owners = ["099720109477"] # Canonical
-}
+#   owners = ["099720109477"] # Canonical
+# }
 
-# EC2 Instance
-resource "aws_instance" "ec2" {
-  ami                    = data.aws_ami.ubuntu.id
-  instance_type          = var.instance_type
-  subnet_id              = aws_subnet.public.id
-  vpc_security_group_ids = [aws_security_group.ssh.id]
+# # EC2 Instance
+# resource "aws_instance" "ec2" {
+#   ami                    = data.aws_ami.ubuntu.id
+#   instance_type          = var.instance_type
+#   subnet_id              = aws_subnet.public.id
+#   vpc_security_group_ids = [aws_security_group.ssh.id]
 
-  tags = {
-    Name = "ec2"
-  }
-}
+#   tags = {
+#     Name = "ec2"
+#   }
+# }
