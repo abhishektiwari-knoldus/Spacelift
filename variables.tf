@@ -8,7 +8,7 @@ variable "aws_region" {
 # }
 
 variable "instance_type" {
-  default = "t3.micro"
+  default = "t3.large"
 }
 
 # t2.xlarge
